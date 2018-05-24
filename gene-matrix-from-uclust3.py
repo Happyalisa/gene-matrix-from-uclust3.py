@@ -38,7 +38,7 @@ ct=0
 n=0
 for line in f:
 	k = line.split("\t")
-	if k[0]<>"S":
+	if k[0]!="S":
 		
 		hit=k[8].split(delim)[0] #nb the "cds" separates the cds number from the genome id, so only score the genome id as a hit
 		if hit not in hitlist:
@@ -51,7 +51,7 @@ for line in f:
 			cds = k[8]
 			data[cds]={} #new cluster
 			data[cds][hit]=float(1) #self identity
-			print "cluster",ct,cds	
+			print ("cluster",ct,cds)	
 		if k[0]=="H":
 			id = float(k[3])/100
 			
@@ -66,7 +66,7 @@ for line in f:
 					data[cds][hit]=id
 		
 	
-print "writing"
+print ("writing")
 hitlist.sort(key=tokenize)		
 
 title="\t"+"\t".join(str(p)for p in hitlist)+"\n"
